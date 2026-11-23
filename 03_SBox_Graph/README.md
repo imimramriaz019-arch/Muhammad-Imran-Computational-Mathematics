@@ -1,6 +1,6 @@
 # Graph-Theoretical Construction of S-Box for Image Encryption
 
-**Author:** Muhammad Imran Riaz
+**Author:** Muhammad Imran 
 **Affiliation:** Department of Mathematics, University of Education Lahore, Pakistan
 **Email:** imimramriaz019@gmail.com
 
@@ -10,22 +10,67 @@ This work presents a new method to construct the S-Box, which is the non-linear 
 
 The main idea is to use a **Complete Graph** made from a word, and then apply a fractional transformation to generate a strong S-Box.
 
-## 2. My Algorithm - 4 Steps
+## 2. Algorithm - 4 Steps
 
 **Step 1: Word to Graph**
-Word ke har letter ko vertex banao.
+Convert each letter of the word into a vertex.
 Word = `BILAL`
 - B = 66, I = 73, L = 76, A = 65, L = 76
 
 **Step 2: Cycle Graph to Complete Graph**
-Sab vertices ko aapas me connect karo.
-Edge weight = |ASCII difference| of two letters.
+Connect all vertices with each other.
+Edge weight = Absolute ASCII difference of two letters.
 
 **Step 3: Adjacency Matrix to Fractional Transformation**
-```python
+print("Done - S-Box ready for image encryption")
+- At x = 214, f is undefined -> replace with 0
+- At x = 171, f = 256 -> replace with missing value 154
+
+**Step 4: Arrange**
+Arrange all 256 outputs into a 16x16 table = S-Box
+
+## 3. Results - Specimen S-Box (BILAL)
+
+| Criterion | My Value | Ideal Value |
+| --- | --- | --- |
+| Nonlinearity (NL) - Average | 105.25 | 112 |
+| Nonlinearity - Min / Max | 102 / 108 | 112 |
+| BIC-NL - Average | 103.21 | 112 |
+| Linear Probability (LP) | 0.1484 | Low is good |
+| SAC - Average | 0.4812 | 0.5 |
+| Differential Uniformity (DU) | 16 | Low is good |
+
+## 4. Image Encryption Application
+
+The S-Box was used for image encryption.
+
+**Baboon Image:**
+- Entropy = 7.9973
+- Correlation = -0.0026
+- Contrast = 10.5176
+
+**Pepper Image:**
+- Entropy = 7.9969
+- Correlation = 0.0296
+- Contrast = 10.1433
+
+Entropy close to 8 means the encryption is very strong.
+
+## 5. My Own Extension - Word IMRAN
+
+The paper used BILAL. In my code, I also generated an S-Box using my own word **IMRAN**.
+This shows that I implemented the algorithm myself, not just copied it.
+
+## 6. Files in This Folder
+
+- `sbox_graph.py` - Complete Code: S-Box Generation + Analysis + Image Encryption
+- `README.md` - This file
+
+## 7. How to Run
+``python
 """
 Graph-Based S-Box Construction
-Author: Muhammad Imran Riaz
+Author: Muhammad Imran 
 Paper: A Graph-Theoretical Approach for Construction of Non-Linear Component
 Word BILAL -> Complete Graph -> f(x)=1/(6x+1) mod 257 -> S-Box
 My Extension: Also generate S-Box for word IMRAN
@@ -81,3 +126,6 @@ print(f"\nImage Encryption Demo:")
 print(f"Original Pixels: {test_pixels}")
 print(f"Encrypted Pixels: {encrypted}")
 print("Done - S-Box ready for image encryption")
+
+```bash
+python sbox_graph.py
