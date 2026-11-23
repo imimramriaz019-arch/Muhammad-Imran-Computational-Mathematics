@@ -1,7 +1,6 @@
 # Graph-Theoretical Construction of S-Box for Image Encryption
 
 **Author:** Muhammad Imran Riaz
-**Co-Author:** Muhammad Nadeem
 **Affiliation:** Department of Mathematics, University of Education Lahore, Pakistan
 **Email:** imimramriaz019@gmail.com
 
@@ -27,7 +26,6 @@ Edge weight = |ASCII difference| of two letters.
 """
 Graph-Based S-Box Construction
 Author: Muhammad Imran Riaz
-Co-Author: Muhammad Nadeem
 Paper: A Graph-Theoretical Approach for Construction of Non-Linear Component
 Word BILAL -> Complete Graph -> f(x)=1/(6x+1) mod 257 -> S-Box
 My Extension: Also generate S-Box for word IMRAN
